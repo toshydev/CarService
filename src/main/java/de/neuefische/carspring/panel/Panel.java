@@ -3,12 +3,15 @@ package de.neuefische.carspring.panel;
 import com.google.gson.Gson;
 import de.neuefische.carspring.controller.CarController;
 import de.neuefische.carspring.model.Car;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@Component
 public class Panel extends JPanel implements ActionListener {
     JButton listButton;
     JButton addButton;
@@ -17,22 +20,24 @@ public class Panel extends JPanel implements ActionListener {
     JTextArea output;
     JTextArea carInput;
     JTextField carId;
+
+    @Autowired
     private CarController carController;
 
-
     public Panel() {
-        this.carController = new CarController();
         this.setPreferredSize(new Dimension(750, 500));
         this.setBackground(Color.DARK_GRAY);
 
-        this.output = new JTextArea();
+        this.output = new JTextArea(10, 25);
         this.carInput = new JTextArea();
         this.carId = new JTextField();
 
         output.setWrapStyleWord(true);
         output.setLineWrap(true);
         output.setText("Welcome to Snek Car Service");
-        output.setPreferredSize(new Dimension(500, 450));
+        output.setEditable(false);
+        output.setPreferredSize(new Dimension(500, 250));
+        output.setCaretPosition(output.getDocument().getLength());
 
         carInput.setWrapStyleWord(true);
         carInput.setLineWrap(true);

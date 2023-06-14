@@ -2,7 +2,7 @@ package de.neuefische.carspring.controller;
 
 import de.neuefische.carspring.collection.CarService;
 import de.neuefische.carspring.model.Car;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,12 +10,9 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class CarController {
     private final CarService carService;
-
-    public CarController() {
-        this.carService = new CarService();
-    }
 
     @GetMapping("car")
     public List<Car> list() {

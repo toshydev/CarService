@@ -1,7 +1,12 @@
 package de.neuefische.carspring.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.util.UUID;
 
+@Data
+@AllArgsConstructor
 public class Car {
     private String manufacturer;
     private int wheelsCount;

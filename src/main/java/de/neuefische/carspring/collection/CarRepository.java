@@ -1,12 +1,17 @@
 package de.neuefische.carspring.collection;
 
 import de.neuefische.carspring.model.Car;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class CarRepository {
-    private Map<UUID, Car> cars;
+    private final Map<UUID, Car> cars;
 
+    public CarRepository(Map<UUID, Car> cars) {
+        this.cars = cars;
+    }
     public CarRepository() {
         this.cars = new HashMap<>();
         ArrayList<Car> carList = new ArrayList<>(List.of(

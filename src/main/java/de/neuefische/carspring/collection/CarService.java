@@ -1,16 +1,17 @@
 package de.neuefische.carspring.collection;
 
 import de.neuefische.carspring.model.Car;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
+@RequiredArgsConstructor
 public class CarService {
-    private CarRepository carRepository;
 
-    public CarService() {
-        this.carRepository = new CarRepository();
-    }
+    private final CarRepository carRepository;
 
     public void addCar(Car car) {
         this.carRepository.addCar(car);
